@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { afterNextRender, Component, inject, signal } from '@angular/core';
 import { Header } from './components/header/header';
 import { TodoForm } from './components/todo-form/todo-form';
 import { TodoList } from './components/todo-list/todo-list';
@@ -20,6 +20,10 @@ export class App {
   readonly selectedTask = signal<Task | null>(null);
   readonly newTaskTitle = signal('');
   readonly tasks = this.taskService.tasks;
+
+  constructor() {
+    afterNextRender(() => this.taskService.loadTasks());
+  }
 
   openAddModal(title: string) {
     this.selectedTask.set(null);

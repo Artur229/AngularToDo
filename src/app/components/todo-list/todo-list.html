@@ -3,8 +3,25 @@
   <span>{{ remainingCount() }} remaining</span>
 </section>
 
+<div class="list-controls" aria-label="Task list controls">
+  <div class="filter-group" aria-label="Filter tasks">
+    <button type="button" [class.active]="filter() === 'all'" (click)="filter.set('all')">All</button>
+    <button type="button" [class.active]="filter() === 'active'" (click)="filter.set('active')">Active</button>
+    <button type="button" [class.active]="filter() === 'completed'" (click)="filter.set('completed')">Completed</button>
+  </div>
+
+  <button
+    class="sort-button"
+    type="button"
+    [class.active]="sortByPriority()"
+    (click)="sortByPriority.update((enabled) => !enabled)"
+  >
+    Sort by priority
+  </button>
+</div>
+
 <section class="task-list" aria-label="Tasks">
-  @for (task of tasks(); track task.id) {
+  @for (task of visibleTasks(); track task.id) {
     <app-todo-item
       [task]="task"
       (edit)="editTask.emit($event)"

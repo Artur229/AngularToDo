@@ -23,6 +23,41 @@ h2,
   gap: 24px;
 }
 
+.list-controls {
+  margin: 0 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.list-controls button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid #414e67;
+  border-radius: 9px;
+  background: #252f42;
+  color: #aeb9cc;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.list-controls button:hover,
+.list-controls button.active {
+  border-color: #7398f3;
+  background: #354a78;
+  color: #eef3ff;
+}
+
 .empty-state {
   margin: 8px 0 0;
   padding: 36px 20px;
@@ -39,5 +74,15 @@ h2,
 
   .task-list {
     gap: 14px;
+  }
+
+  .list-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .filter-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
