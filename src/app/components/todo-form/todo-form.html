@@ -2,7 +2,7 @@
   <h1 id="page-title">My Tasks</h1>
   <p>Stay organized and get things done.</p>
 
-  <form class="todo-form">
+  <form class="todo-form" (ngSubmit)="submitTask()">
     <label class="sr-only" for="new-task">New task</label>
     <input
       id="new-task"
@@ -10,6 +10,7 @@
       type="text"
       placeholder="What needs to be done?"
       autocomplete="off"
+      [(ngModel)]="title"
     />
     <button type="submit">
       <span aria-hidden="true">+</span>

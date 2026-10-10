@@ -1,4 +1,17 @@
 <section class="list-heading" id="tasks" aria-label="Task summary">
   <h2>Your tasks</h2>
-  <span>2 remaining</span>
+  <span>{{ remainingCount() }} remaining</span>
+</section>
+
+<section class="task-list" aria-label="Tasks">
+  @for (task of tasks(); track task.id) {
+    <app-todo-item
+      [task]="task"
+      (edit)="editTask.emit($event)"
+      (toggle)="toggleTask.emit($event)"
+      (remove)="deleteTask.emit($event)"
+    />
+  } @empty {
+    <p class="empty-state">No tasks yet. Add your first one above.</p>
+  }
 </section>

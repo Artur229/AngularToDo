@@ -1,5 +1,16 @@
 <app-header />
-<app-todo-form />
-<app-todo-list />
-<app-todo-item />
-<app-todo-modal />
+<app-todo-form (addTask)="openAddModal($event)" />
+<app-todo-list
+  [tasks]="tasks()"
+  (editTask)="openEditModal($event)"
+  (toggleTask)="toggleTask($event)"
+  (deleteTask)="deleteTask($event)"
+/>
+@if (isModalOpen()) {
+  <app-todo-modal
+    [task]="selectedTask()"
+    [initialTitle]="newTaskTitle()"
+    (close)="closeModal()"
+    (save)="saveTask($event)"
+  />
+}
