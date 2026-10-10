@@ -1,0 +1,121 @@
+:host {
+  display: block;
+}
+
+.intro {
+  padding-top: 46px;
+}
+
+h1 {
+  margin: 0;
+  color: #f8f9fc;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  line-height: 1.2;
+}
+
+p {
+  margin: 28px 0 24px;
+  color: #b5bfd2;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  letter-spacing: 0.01em;
+}
+
+.todo-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+}
+
+input {
+  width: 100%;
+  min-height: 100px;
+  padding: 0 24px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  outline: none;
+  background: #293449;
+  color: #f6f7fb;
+  font-size: clamp(1.05rem, 2vw, 1.75rem);
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+input::placeholder {
+  color: #b5bfd2;
+  opacity: 1;
+}
+
+input:focus {
+  border-color: #7398f3;
+  background: #2d3950;
+}
+
+button {
+  min-width: 164px;
+  min-height: 100px;
+  padding: 0 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 0;
+  border-radius: 12px;
+  background: #5276db;
+  color: #fff;
+  cursor: pointer;
+  font-size: clamp(1.1rem, 2vw, 1.65rem);
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+button:hover {
+  background: #6285e7;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button span {
+  font-size: 1.55em;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .intro {
+    padding-top: 32px;
+  }
+
+  p {
+    margin: 16px 0 22px;
+  }
+
+  .todo-form {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  input,
+  button {
+    min-height: 64px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

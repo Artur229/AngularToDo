@@ -1,0 +1,340 @@
+:host {
+  display: contents;
+}
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  background: rgb(7 11 20 / 78%);
+  backdrop-filter: blur(5px);
+}
+
+.todo-modal {
+  position: relative;
+  width: min(100%, 680px);
+  padding: 30px;
+  border: 1px solid #3a4760;
+  border-radius: 18px;
+  background: #20293a;
+  box-shadow: 0 30px 80px rgb(0 0 0 / 45%);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #354158;
+}
+
+.modal-eyebrow {
+  margin: 0 0 6px;
+  color: #7ea4ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #f8f9fc;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #43516b;
+  border-radius: 10px;
+  background: #2a354a;
+  color: #bdc7d9;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+  border-color: #6f94ed;
+  color: #8eb0ff;
+}
+
+.icon-button svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.edit-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-form {
+  display: grid;
+  gap: 22px;
+  padding-top: 22px;
+}
+
+.edit-state {
+  min-height: 20px;
+  color: #96a3b9;
+  font-size: 0.85rem;
+}
+
+.edit-state::after {
+  content: "View mode — click the pencil to edit";
+}
+
+.edit-toggle:checked ~ .modal-form .edit-state::after {
+  content: "Editing enabled";
+  color: #82a8ff;
+}
+
+.edit-toggle:checked ~ .modal-header .edit-button {
+  border-color: #6f94ed;
+  background: #354c80;
+  color: #a8c0ff;
+}
+
+.field {
+  display: grid;
+  gap: 9px;
+}
+
+.field > span,
+.option-group legend {
+  color: #c7cfdd;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid #3d4a63;
+  border-radius: 10px;
+  outline: none;
+  background: #293449;
+  color: #f7f8fc;
+  font: inherit;
+  pointer-events: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.field input {
+  min-height: 54px;
+  padding: 0 16px;
+}
+
+.field textarea {
+  min-height: 112px;
+  padding: 15px 16px;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #7f8ba1;
+}
+
+.edit-toggle:checked ~ .modal-form .field input,
+.edit-toggle:checked ~ .modal-form .field textarea {
+  border-color: #556783;
+  background: #2d394f;
+  pointer-events: auto;
+}
+
+.edit-toggle:checked ~ .modal-form .field input:focus,
+.edit-toggle:checked ~ .modal-form .field textarea:focus {
+  border-color: #7398f3;
+}
+
+.option-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+}
+
+.option-group legend {
+  margin-bottom: 10px;
+}
+
+.edit-toggle:checked ~ .modal-form .option-group {
+  pointer-events: auto;
+}
+
+.segmented-options,
+.status-options {
+  display: grid;
+  gap: 10px;
+}
+
+.segmented-options {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.status-options {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.option input,
+.status-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option span,
+.status-option span {
+  min-height: 46px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #414e67;
+  border-radius: 10px;
+  background: #293449;
+  color: #aeb9cc;
+  cursor: pointer;
+  font-size: 0.92rem;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.option input:checked + span,
+.status-option input:checked + span {
+  border-color: #769cff;
+  background: #354a78;
+  color: #eef3ff;
+}
+
+.option--low input:checked + span {
+  border-color: #64c69b;
+  background: rgb(44 132 96 / 25%);
+  color: #83ddb7;
+}
+
+.option--medium input:checked + span {
+  border-color: #e5b75d;
+  background: rgb(163 115 28 / 25%);
+  color: #f0c975;
+}
+
+.option--high input:checked + span {
+  border-color: #eb7180;
+  background: rgb(159 49 66 / 25%);
+  color: #ff95a1;
+}
+
+.status-option svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
+
+.modal-footer {
+  padding-top: 4px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.modal-footer button {
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.secondary-button {
+  border: 1px solid #46536b;
+  background: transparent;
+  color: #c3ccdb;
+}
+
+.primary-button {
+  border: 1px solid #5276db;
+  background: #5276db;
+  color: #fff;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.edit-toggle:checked ~ .modal-form .primary-button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .modal-backdrop {
+    padding: 14px;
+    place-items: start center;
+  }
+
+  .todo-modal {
+    margin-block: 14px;
+    padding: 22px 18px;
+    border-radius: 15px;
+  }
+
+  .modal-header {
+    padding-bottom: 18px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-form {
+    gap: 18px;
+    padding-top: 18px;
+  }
+
+  .segmented-options,
+  .status-options {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

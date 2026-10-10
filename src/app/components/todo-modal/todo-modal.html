@@ -1,0 +1,80 @@
+<div class="modal-backdrop">
+  <section class="todo-modal" role="dialog" aria-modal="true" aria-labelledby="todo-modal-title">
+    <input class="edit-toggle" id="edit-todo" type="checkbox" />
+
+    <header class="modal-header">
+      <div>
+        <p class="modal-eyebrow">Task details</p>
+        <h2 id="todo-modal-title">Todo</h2>
+      </div>
+
+      <div class="modal-actions">
+        <label class="icon-button edit-button" for="edit-todo" aria-label="Edit task" title="Edit task">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m4 20 4.2-1 10.6-10.6a2.1 2.1 0 0 0-3-3L5.2 16 4 20Z" />
+            <path d="m14.5 6.5 3 3" />
+          </svg>
+        </label>
+        <button class="icon-button close-button" type="button" aria-label="Close dialog" title="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <form class="modal-form">
+      <span class="edit-state" aria-live="polite"></span>
+
+      <label class="field">
+        <span>Task name</span>
+        <input type="text" name="title" placeholder="Enter task name" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Description</span>
+        <textarea name="description" rows="4" placeholder="Add a description"></textarea>
+      </label>
+
+      <fieldset class="option-group priority-group">
+        <legend>Priority</legend>
+        <div class="segmented-options">
+          <label class="option option--low">
+            <input type="radio" name="priority" value="low" />
+            <span>Low</span>
+          </label>
+          <label class="option option--medium">
+            <input type="radio" name="priority" value="medium" />
+            <span>Medium</span>
+          </label>
+          <label class="option option--high">
+            <input type="radio" name="priority" value="high" />
+            <span>High</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="option-group status-group">
+        <legend>Status</legend>
+        <div class="status-options">
+          <label class="status-option">
+            <input type="radio" name="status" value="active" checked />
+            <span>Not completed</span>
+          </label>
+          <label class="status-option">
+            <input type="radio" name="status" value="completed" />
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>
+              Completed
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      <footer class="modal-footer">
+        <button class="secondary-button" type="button">Cancel</button>
+        <button class="primary-button" type="submit">Save task</button>
+      </footer>
+    </form>
+  </section>
+</div>

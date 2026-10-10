@@ -15,10 +15,14 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should render all app components', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, AngularToDo');
+    expect(compiled.querySelector('app-header')).toBeTruthy();
+    expect(compiled.querySelector('app-todo-form')).toBeTruthy();
+    expect(compiled.querySelector('app-todo-list')).toBeTruthy();
+    expect(compiled.querySelector('app-todo-item')).toBeTruthy();
+    expect(compiled.querySelector('app-todo-modal')).toBeTruthy();
   });
 });
